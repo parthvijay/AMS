@@ -1,0 +1,2411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://Connection" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Connection" xmlns:intf="http://Connection" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://Connection" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="register">
+    <complexType>
+     <sequence>
+      <element name="firstname" type="xsd:string"/>
+      <element name="ssn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="registerResponse">
+    <complexType>
+     <sequence>
+      <element name="registerReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteEmployee">
+    <complexType>
+     <sequence>
+      <element name="sid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteEmployeeResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteEmployeeReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllEmployee">
+    <complexType>
+     <sequence>
+      <element name="alid" type="xsd:string"/>
+      <element name="status" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllEmployeeResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllEmployeeReturn" type="impl:Staff"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Staff">
+    <sequence>
+     <element name="alid" nillable="true" type="xsd:string"/>
+     <element name="hiredate" nillable="true" type="xsd:string"/>
+     <element name="position" nillable="true" type="xsd:string"/>
+     <element name="sid" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="updateEmployee">
+    <complexType>
+     <sequence>
+      <element name="staff" type="impl:Staff"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateEmployeeResponse">
+    <complexType>
+     <sequence>
+      <element name="updateEmployeeReturn" type="impl:Staff"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createEmployee">
+    <complexType>
+     <sequence>
+      <element name="staff" type="impl:Staff"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createEmployeeResponse">
+    <complexType>
+     <sequence>
+      <element name="createEmployeeReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustTravelInfo">
+    <complexType>
+     <sequence>
+      <element name="cid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustTravelInfoResponse">
+    <complexType>
+     <sequence>
+      <element name="getCustTravelInfoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCompleterCustomerDetails">
+    <complexType>
+     <sequence>
+      <element name="cid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCompleterCustomerDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="getCompleterCustomerDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustomerById">
+    <complexType>
+     <sequence>
+      <element name="cid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustomerByIdResponse">
+    <complexType>
+     <sequence>
+      <element name="getCustomerByIdReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllFlights">
+    <complexType>
+     <sequence>
+      <element name="alid" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllFlightsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllFlightsReturn" type="impl:Flight"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Flight">
+    <sequence>
+     <element name="aircraft" nillable="true" type="xsd:string"/>
+     <element name="alid" nillable="true" type="xsd:string"/>
+     <element name="arrvdate" nillable="true" type="xsd:string"/>
+     <element name="arrvtime" nillable="true" type="xsd:string"/>
+     <element name="deptdate" nillable="true" type="xsd:string"/>
+     <element name="depttime" nillable="true" type="xsd:string"/>
+     <element name="destination" nillable="true" type="xsd:string"/>
+     <element name="source" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="getCustomerFlight">
+    <complexType>
+     <sequence>
+      <element name="alid" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+      <element name="aircraft" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustomerFlightResponse">
+    <complexType>
+     <sequence>
+      <element name="getCustomerFlightReturn" type="impl:Flight"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateCustomer">
+    <complexType>
+     <sequence>
+      <element name="customer" type="impl:Customer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Customer">
+    <sequence>
+     <element name="aircraft" nillable="true" type="xsd:string"/>
+     <element name="alid" nillable="true" type="xsd:string"/>
+     <element name="cid" nillable="true" type="xsd:string"/>
+     <element name="date" nillable="true" type="xsd:string"/>
+     <element name="nationality" nillable="true" type="xsd:string"/>
+     <element name="passport" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+     <element name="ticketnum" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="updateCustomerResponse">
+    <complexType>
+     <sequence>
+      <element name="updateCustomerReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBookingsOfACustomer">
+    <complexType>
+     <sequence>
+      <element name="cid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBookingsOfACustomerResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getBookingsOfACustomerReturn" type="impl:Customer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllCustomers">
+    <complexType>
+     <sequence>
+      <element name="alid" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllCustomersResponse">
+    <complexType>
+     <sequence>
+      <element name="getAllCustomersReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="newReservation">
+    <complexType>
+     <sequence>
+      <element name="customer" type="impl:Customer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="newReservationResponse">
+    <complexType>
+     <sequence>
+      <element name="newReservationReturn" type="impl:Flight"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createCustomer">
+    <complexType>
+     <sequence>
+      <element name="customer" type="impl:Customer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createCustomerResponse">
+    <complexType>
+     <sequence>
+      <element name="createCustomerReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAssignedFlights">
+    <complexType>
+     <sequence>
+      <element name="sid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAssignedFlightsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAssignedFlightsReturn" type="impl:Flight"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPersonCustomer">
+    <complexType>
+     <sequence>
+      <element name="cid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPersonCustomerResponse">
+    <complexType>
+     <sequence>
+      <element name="getPersonCustomerReturn" type="impl:Person"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Person">
+    <sequence>
+     <element name="address" nillable="true" type="xsd:string"/>
+     <element name="city" nillable="true" type="xsd:string"/>
+     <element name="dob" nillable="true" type="xsd:string"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="firstname" nillable="true" type="xsd:string"/>
+     <element name="lastname" nillable="true" type="xsd:string"/>
+     <element name="phone" nillable="true" type="xsd:string"/>
+     <element name="pid" nillable="true" type="xsd:string"/>
+     <element name="ssn" nillable="true" type="xsd:string"/>
+     <element name="state" nillable="true" type="xsd:string"/>
+     <element name="zip" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="updatePersonDetails">
+    <complexType>
+     <sequence>
+      <element name="person" type="impl:Person"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updatePersonDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="updatePersonDetailsReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getActiveReservation">
+    <complexType>
+     <sequence>
+      <element name="tid" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getActiveReservationResponse">
+    <complexType>
+     <sequence>
+      <element name="getActiveReservationReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifyReservation">
+    <complexType>
+     <sequence>
+      <element name="ticketNumber" type="xsd:string"/>
+      <element name="radioString" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifyReservationResponse">
+    <complexType>
+     <sequence>
+      <element name="modifyReservationReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelReservation">
+    <complexType>
+     <sequence>
+      <element name="ticketNumber" type="xsd:string"/>
+      <element name="status" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelReservationResponse">
+    <complexType>
+     <sequence>
+      <element name="cancelReservationReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="flightExistence">
+    <complexType>
+     <sequence>
+      <element name="flight" type="impl:Flight"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="flightExistenceResponse">
+    <complexType>
+     <sequence>
+      <element name="flightExistenceReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateFlightDetails">
+    <complexType>
+     <sequence>
+      <element name="oAlid" type="xsd:string"/>
+      <element name="oAircraft" type="xsd:string"/>
+      <element name="oDeptdate" type="xsd:string"/>
+      <element name="f" type="impl:Flight"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateFlightDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="updateFlightDetailsReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchEmployees">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="airline" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchEmployeesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchEmployeesReturn" type="impl:DisplayStaff"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="DisplayStaff">
+    <sequence>
+     <element name="address" nillable="true" type="xsd:string"/>
+     <element name="airline" nillable="true" type="xsd:string"/>
+     <element name="alid" nillable="true" type="xsd:string"/>
+     <element name="city" nillable="true" type="xsd:string"/>
+     <element name="dob" nillable="true" type="xsd:string"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="firstname" nillable="true" type="xsd:string"/>
+     <element name="hiredate" nillable="true" type="xsd:string"/>
+     <element name="lastname" nillable="true" type="xsd:string"/>
+     <element name="phone" nillable="true" type="xsd:string"/>
+     <element name="position" nillable="true" type="xsd:string"/>
+     <element name="sid" nillable="true" type="xsd:string"/>
+     <element name="state" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+     <element name="zip" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="updateEmployeeDetails">
+    <complexType>
+     <sequence>
+      <element name="sid" type="xsd:string"/>
+      <element name="p" type="impl:DisplayStaff"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateEmployeeDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="updateEmployeeDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createPerson">
+    <complexType>
+     <sequence>
+      <element name="person" type="impl:Person"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createPersonResponse">
+    <complexType>
+     <sequence>
+      <element name="createPersonReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="changePassword">
+    <complexType>
+     <sequence>
+      <element name="newpassword" type="xsd:string"/>
+      <element name="pid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="changePasswordResponse">
+    <complexType>
+     <sequence>
+      <element name="changePasswordReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="login">
+    <complexType>
+     <sequence>
+      <element name="username" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginResponse">
+    <complexType>
+     <sequence>
+      <element name="loginReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getEmployee">
+    <complexType>
+     <sequence>
+      <element name="sid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getEmployeeResponse">
+    <complexType>
+     <sequence>
+      <element name="getEmployeeReturn" type="impl:Staff"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateFlight">
+    <complexType>
+     <sequence>
+      <element name="alid" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateFlightResponse">
+    <complexType>
+     <sequence>
+      <element name="updateFlightReturn" type="impl:Flight"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createFlight">
+    <complexType>
+     <sequence>
+      <element name="flight" type="impl:Flight"/>
+      <element name="airLine" type="impl:AirLines"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="AirLines">
+    <sequence>
+     <element name="aircraft" nillable="true" type="xsd:string"/>
+     <element name="alid" nillable="true" type="xsd:string"/>
+     <element name="capacity" nillable="true" type="xsd:string"/>
+     <element name="crewcount" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="createFlightResponse">
+    <complexType>
+     <sequence>
+      <element name="createFlightReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteEmp">
+    <complexType>
+     <sequence>
+      <element name="sid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteEmpResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteEmpReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createStaff">
+    <complexType>
+     <sequence>
+      <element name="staff" type="impl:Staff"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createStaffResponse">
+    <complexType>
+     <sequence>
+      <element name="createStaffReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustomer">
+    <complexType>
+     <sequence>
+      <element name="cid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustomerResponse">
+    <complexType>
+     <sequence>
+      <element name="getCustomerReturn" type="impl:Customer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPerson">
+    <complexType>
+     <sequence>
+      <element name="pid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPersonResponse">
+    <complexType>
+     <sequence>
+      <element name="getPersonReturn" type="impl:Person"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewTicket">
+    <complexType>
+     <sequence>
+      <element name="ticketnumber" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewTicketResponse">
+    <complexType>
+     <sequence>
+      <element name="viewTicketReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFlights">
+    <complexType>
+     <sequence>
+      <element name="alid" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+      <element name="source" type="xsd:string"/>
+      <element name="destination" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFlightsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getFlightsReturn" type="impl:Flight"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updatePerson">
+    <complexType>
+     <sequence>
+      <element name="person" type="impl:Person"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updatePersonResponse">
+    <complexType>
+     <sequence>
+      <element name="updatePersonReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getCustTravelInfoRequest">
+
+      <wsdl:part element="impl:getCustTravelInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPersonResponse">
+
+      <wsdl:part element="impl:getPersonResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createEmployeeRequest">
+
+      <wsdl:part element="impl:createEmployee" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="newReservationResponse">
+
+      <wsdl:part element="impl:newReservationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createFlightResponse">
+
+      <wsdl:part element="impl:createFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="changePasswordResponse">
+
+      <wsdl:part element="impl:changePasswordResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewTicketResponse">
+
+      <wsdl:part element="impl:viewTicketResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteEmpResponse">
+
+      <wsdl:part element="impl:deleteEmpResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelReservationResponse">
+
+      <wsdl:part element="impl:cancelReservationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteEmployeeRequest">
+
+      <wsdl:part element="impl:deleteEmployee" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustTravelInfoResponse">
+
+      <wsdl:part element="impl:getCustTravelInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllCustomersRequest">
+
+      <wsdl:part element="impl:getAllCustomers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePersonDetailsRequest">
+
+      <wsdl:part element="impl:updatePersonDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createStaffResponse">
+
+      <wsdl:part element="impl:createStaffResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllFlightsRequest">
+
+      <wsdl:part element="impl:getAllFlights" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllEmployeeResponse">
+
+      <wsdl:part element="impl:getAllEmployeeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createCustomerResponse">
+
+      <wsdl:part element="impl:createCustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createStaffRequest">
+
+      <wsdl:part element="impl:createStaff" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginRequest">
+
+      <wsdl:part element="impl:login" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchEmployeesRequest">
+
+      <wsdl:part element="impl:searchEmployees" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerByIdRequest">
+
+      <wsdl:part element="impl:getCustomerById" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteEmpRequest">
+
+      <wsdl:part element="impl:deleteEmp" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerRequest">
+
+      <wsdl:part element="impl:getCustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registerResponse">
+
+      <wsdl:part element="impl:registerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePersonDetailsResponse">
+
+      <wsdl:part element="impl:updatePersonDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createPersonResponse">
+
+      <wsdl:part element="impl:createPersonResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteEmployeeResponse">
+
+      <wsdl:part element="impl:deleteEmployeeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllEmployeeRequest">
+
+      <wsdl:part element="impl:getAllEmployee" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createCustomerRequest">
+
+      <wsdl:part element="impl:createCustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateFlightDetailsResponse">
+
+      <wsdl:part element="impl:updateFlightDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchEmployeesResponse">
+
+      <wsdl:part element="impl:searchEmployeesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFlightsResponse">
+
+      <wsdl:part element="impl:getFlightsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCompleterCustomerDetailsRequest">
+
+      <wsdl:part element="impl:getCompleterCustomerDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelReservationRequest">
+
+      <wsdl:part element="impl:cancelReservation" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getActiveReservationRequest">
+
+      <wsdl:part element="impl:getActiveReservation" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateFlightRequest">
+
+      <wsdl:part element="impl:updateFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createEmployeeResponse">
+
+      <wsdl:part element="impl:createEmployeeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEmployeeRequest">
+
+      <wsdl:part element="impl:getEmployee" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBookingsOfACustomerResponse">
+
+      <wsdl:part element="impl:getBookingsOfACustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="flightExistenceResponse">
+
+      <wsdl:part element="impl:flightExistenceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerByIdResponse">
+
+      <wsdl:part element="impl:getCustomerByIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="flightExistenceRequest">
+
+      <wsdl:part element="impl:flightExistence" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateEmployeeDetailsResponse">
+
+      <wsdl:part element="impl:updateEmployeeDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPersonRequest">
+
+      <wsdl:part element="impl:getPerson" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerFlightRequest">
+
+      <wsdl:part element="impl:getCustomerFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyReservationResponse">
+
+      <wsdl:part element="impl:modifyReservationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewTicketRequest">
+
+      <wsdl:part element="impl:viewTicket" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="newReservationRequest">
+
+      <wsdl:part element="impl:newReservation" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEmployeeResponse">
+
+      <wsdl:part element="impl:getEmployeeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginResponse">
+
+      <wsdl:part element="impl:loginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCompleterCustomerDetailsResponse">
+
+      <wsdl:part element="impl:getCompleterCustomerDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getActiveReservationResponse">
+
+      <wsdl:part element="impl:getActiveReservationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBookingsOfACustomerRequest">
+
+      <wsdl:part element="impl:getBookingsOfACustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateFlightResponse">
+
+      <wsdl:part element="impl:updateFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePersonResponse">
+
+      <wsdl:part element="impl:updatePersonResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateCustomerRequest">
+
+      <wsdl:part element="impl:updateCustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFlightsRequest">
+
+      <wsdl:part element="impl:getFlights" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateCustomerResponse">
+
+      <wsdl:part element="impl:updateCustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerFlightResponse">
+
+      <wsdl:part element="impl:getCustomerFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateEmployeeDetailsRequest">
+
+      <wsdl:part element="impl:updateEmployeeDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="changePasswordRequest">
+
+      <wsdl:part element="impl:changePassword" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registerRequest">
+
+      <wsdl:part element="impl:register" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPersonCustomerRequest">
+
+      <wsdl:part element="impl:getPersonCustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePersonRequest">
+
+      <wsdl:part element="impl:updatePerson" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createFlightRequest">
+
+      <wsdl:part element="impl:createFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllFlightsResponse">
+
+      <wsdl:part element="impl:getAllFlightsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllCustomersResponse">
+
+      <wsdl:part element="impl:getAllCustomersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAssignedFlightsResponse">
+
+      <wsdl:part element="impl:getAssignedFlightsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerResponse">
+
+      <wsdl:part element="impl:getCustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateEmployeeRequest">
+
+      <wsdl:part element="impl:updateEmployee" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyReservationRequest">
+
+      <wsdl:part element="impl:modifyReservation" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPersonCustomerResponse">
+
+      <wsdl:part element="impl:getPersonCustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createPersonRequest">
+
+      <wsdl:part element="impl:createPerson" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateFlightDetailsRequest">
+
+      <wsdl:part element="impl:updateFlightDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateEmployeeResponse">
+
+      <wsdl:part element="impl:updateEmployeeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAssignedFlightsRequest">
+
+      <wsdl:part element="impl:getAssignedFlights" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Service">
+
+      <wsdl:operation name="register">
+
+         <wsdl:input message="impl:registerRequest" name="registerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:registerResponse" name="registerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteEmployee">
+
+         <wsdl:input message="impl:deleteEmployeeRequest" name="deleteEmployeeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteEmployeeResponse" name="deleteEmployeeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllEmployee">
+
+         <wsdl:input message="impl:getAllEmployeeRequest" name="getAllEmployeeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllEmployeeResponse" name="getAllEmployeeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateEmployee">
+
+         <wsdl:input message="impl:updateEmployeeRequest" name="updateEmployeeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateEmployeeResponse" name="updateEmployeeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createEmployee">
+
+         <wsdl:input message="impl:createEmployeeRequest" name="createEmployeeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createEmployeeResponse" name="createEmployeeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustTravelInfo">
+
+         <wsdl:input message="impl:getCustTravelInfoRequest" name="getCustTravelInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCustTravelInfoResponse" name="getCustTravelInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCompleterCustomerDetails">
+
+         <wsdl:input message="impl:getCompleterCustomerDetailsRequest" name="getCompleterCustomerDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCompleterCustomerDetailsResponse" name="getCompleterCustomerDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomerById">
+
+         <wsdl:input message="impl:getCustomerByIdRequest" name="getCustomerByIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCustomerByIdResponse" name="getCustomerByIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllFlights">
+
+         <wsdl:input message="impl:getAllFlightsRequest" name="getAllFlightsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllFlightsResponse" name="getAllFlightsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomerFlight">
+
+         <wsdl:input message="impl:getCustomerFlightRequest" name="getCustomerFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCustomerFlightResponse" name="getCustomerFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateCustomer">
+
+         <wsdl:input message="impl:updateCustomerRequest" name="updateCustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateCustomerResponse" name="updateCustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBookingsOfACustomer">
+
+         <wsdl:input message="impl:getBookingsOfACustomerRequest" name="getBookingsOfACustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBookingsOfACustomerResponse" name="getBookingsOfACustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllCustomers">
+
+         <wsdl:input message="impl:getAllCustomersRequest" name="getAllCustomersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllCustomersResponse" name="getAllCustomersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="newReservation">
+
+         <wsdl:input message="impl:newReservationRequest" name="newReservationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:newReservationResponse" name="newReservationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createCustomer">
+
+         <wsdl:input message="impl:createCustomerRequest" name="createCustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createCustomerResponse" name="createCustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAssignedFlights">
+
+         <wsdl:input message="impl:getAssignedFlightsRequest" name="getAssignedFlightsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAssignedFlightsResponse" name="getAssignedFlightsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPersonCustomer">
+
+         <wsdl:input message="impl:getPersonCustomerRequest" name="getPersonCustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPersonCustomerResponse" name="getPersonCustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePersonDetails">
+
+         <wsdl:input message="impl:updatePersonDetailsRequest" name="updatePersonDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updatePersonDetailsResponse" name="updatePersonDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getActiveReservation">
+
+         <wsdl:input message="impl:getActiveReservationRequest" name="getActiveReservationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getActiveReservationResponse" name="getActiveReservationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyReservation">
+
+         <wsdl:input message="impl:modifyReservationRequest" name="modifyReservationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:modifyReservationResponse" name="modifyReservationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelReservation">
+
+         <wsdl:input message="impl:cancelReservationRequest" name="cancelReservationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cancelReservationResponse" name="cancelReservationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="flightExistence">
+
+         <wsdl:input message="impl:flightExistenceRequest" name="flightExistenceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:flightExistenceResponse" name="flightExistenceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateFlightDetails">
+
+         <wsdl:input message="impl:updateFlightDetailsRequest" name="updateFlightDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateFlightDetailsResponse" name="updateFlightDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchEmployees">
+
+         <wsdl:input message="impl:searchEmployeesRequest" name="searchEmployeesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchEmployeesResponse" name="searchEmployeesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateEmployeeDetails">
+
+         <wsdl:input message="impl:updateEmployeeDetailsRequest" name="updateEmployeeDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateEmployeeDetailsResponse" name="updateEmployeeDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createPerson">
+
+         <wsdl:input message="impl:createPersonRequest" name="createPersonRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createPersonResponse" name="createPersonResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changePassword">
+
+         <wsdl:input message="impl:changePasswordRequest" name="changePasswordRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:changePasswordResponse" name="changePasswordResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdl:input message="impl:loginRequest" name="loginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loginResponse" name="loginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEmployee">
+
+         <wsdl:input message="impl:getEmployeeRequest" name="getEmployeeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getEmployeeResponse" name="getEmployeeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateFlight">
+
+         <wsdl:input message="impl:updateFlightRequest" name="updateFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateFlightResponse" name="updateFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createFlight">
+
+         <wsdl:input message="impl:createFlightRequest" name="createFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createFlightResponse" name="createFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteEmp">
+
+         <wsdl:input message="impl:deleteEmpRequest" name="deleteEmpRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteEmpResponse" name="deleteEmpResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createStaff">
+
+         <wsdl:input message="impl:createStaffRequest" name="createStaffRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createStaffResponse" name="createStaffResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomer">
+
+         <wsdl:input message="impl:getCustomerRequest" name="getCustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCustomerResponse" name="getCustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPerson">
+
+         <wsdl:input message="impl:getPersonRequest" name="getPersonRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPersonResponse" name="getPersonResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewTicket">
+
+         <wsdl:input message="impl:viewTicketRequest" name="viewTicketRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:viewTicketResponse" name="viewTicketResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFlights">
+
+         <wsdl:input message="impl:getFlightsRequest" name="getFlightsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFlightsResponse" name="getFlightsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePerson">
+
+         <wsdl:input message="impl:updatePersonRequest" name="updatePersonRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updatePersonResponse" name="updatePersonResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ServiceSoapBinding" type="impl:Service">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="register">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="registerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="registerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteEmployee">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteEmployeeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteEmployeeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllEmployee">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllEmployeeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllEmployeeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateEmployee">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateEmployeeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateEmployeeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createEmployee">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createEmployeeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createEmployeeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustTravelInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCustTravelInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCustTravelInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCompleterCustomerDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCompleterCustomerDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCompleterCustomerDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomerById">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCustomerByIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCustomerByIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllFlights">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllFlightsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllFlightsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomerFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCustomerFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCustomerFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBookingsOfACustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBookingsOfACustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBookingsOfACustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllCustomers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllCustomersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllCustomersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="newReservation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="newReservationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="newReservationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAssignedFlights">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAssignedFlightsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAssignedFlightsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPersonCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPersonCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPersonCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePersonDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updatePersonDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updatePersonDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getActiveReservation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getActiveReservationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getActiveReservationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyReservation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifyReservationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifyReservationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelReservation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelReservationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelReservationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="flightExistence">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="flightExistenceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="flightExistenceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateFlightDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateFlightDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateFlightDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchEmployees">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchEmployeesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchEmployeesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateEmployeeDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateEmployeeDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateEmployeeDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createPerson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createPersonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createPersonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changePassword">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="changePasswordRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="changePasswordResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEmployee">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getEmployeeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEmployeeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteEmp">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteEmpRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteEmpResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createStaff">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createStaffRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createStaffResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPerson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPersonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPersonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewTicket">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewTicketRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewTicketResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFlights">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFlightsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFlightsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePerson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updatePersonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updatePersonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ServiceService">
+
+      <wsdl:port binding="impl:ServiceSoapBinding" name="Service">
+
+         <wsdlsoap:address location="http://localhost:8080/AMS/services/Service"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,206 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\parth\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\AMS\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="Service" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="register" qname="ns1:register" returnQName="ns1:registerReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:firstname" type="xsd:string"/>
+   <ns2:parameter qname="ns1:ssn" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="deleteEmployee" qname="ns2:deleteEmployee" returnQName="ns2:deleteEmployeeReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:sid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getAllEmployee" qname="ns3:getAllEmployee" returnQName="ns3:getAllEmployeeReturn" returnType="ns3:Staff" soapAction="" xmlns:ns3="http://Connection">
+   <ns1:parameter qname="ns3:alid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:status" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="updateEmployee" qname="ns4:updateEmployee" returnQName="ns4:updateEmployeeReturn" returnType="ns4:Staff" soapAction="" xmlns:ns4="http://Connection">
+   <ns1:parameter qname="ns4:staff" type="ns4:Staff"/>
+  </ns1:operation>
+  <ns1:operation name="createEmployee" qname="ns5:createEmployee" returnQName="ns5:createEmployeeReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:staff" type="ns5:Staff"/>
+  </ns1:operation>
+  <ns1:operation name="getCustTravelInfo" qname="ns6:getCustTravelInfo" returnQName="ns6:getCustTravelInfoReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:cid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getCompleterCustomerDetails" qname="ns7:getCompleterCustomerDetails" returnQName="ns7:getCompleterCustomerDetailsReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:cid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getCustomerById" qname="ns8:getCustomerById" returnQName="ns8:getCustomerByIdReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:cid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getAllFlights" qname="ns9:getAllFlights" returnQName="ns9:getAllFlightsReturn" returnType="ns9:Flight" soapAction="" xmlns:ns9="http://Connection">
+   <ns1:parameter qname="ns9:alid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns9:date" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getCustomerFlight" qname="ns10:getCustomerFlight" returnQName="ns10:getCustomerFlightReturn" returnType="ns10:Flight" soapAction="" xmlns:ns10="http://Connection">
+   <ns1:parameter qname="ns10:alid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns10:date" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns10:aircraft" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="updateCustomer" qname="ns11:updateCustomer" returnQName="ns11:updateCustomerReturn" returnType="xsd:boolean" soapAction="" xmlns:ns11="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:customer" type="ns11:Customer"/>
+  </ns1:operation>
+  <ns1:operation name="getBookingsOfACustomer" qname="ns12:getBookingsOfACustomer" returnQName="ns12:getBookingsOfACustomerReturn" returnType="ns12:Customer" soapAction="" xmlns:ns12="http://Connection">
+   <ns1:parameter qname="ns12:cid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getAllCustomers" qname="ns13:getAllCustomers" returnQName="ns13:getAllCustomersReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:alid" type="xsd:string"/>
+   <ns1:parameter qname="ns13:date" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="newReservation" qname="ns14:newReservation" returnQName="ns14:newReservationReturn" returnType="ns14:Flight" soapAction="" xmlns:ns14="http://Connection">
+   <ns1:parameter qname="ns14:customer" type="ns14:Customer"/>
+  </ns1:operation>
+  <ns1:operation name="createCustomer" qname="ns15:createCustomer" returnQName="ns15:createCustomerReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:customer" type="ns15:Customer"/>
+  </ns1:operation>
+  <ns1:operation name="getAssignedFlights" qname="ns16:getAssignedFlights" returnQName="ns16:getAssignedFlightsReturn" returnType="ns16:Flight" soapAction="" xmlns:ns16="http://Connection">
+   <ns1:parameter qname="ns16:sid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getPersonCustomer" qname="ns17:getPersonCustomer" returnQName="ns17:getPersonCustomerReturn" returnType="ns17:Person" soapAction="" xmlns:ns17="http://Connection">
+   <ns1:parameter qname="ns17:cid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="updatePersonDetails" qname="ns18:updatePersonDetails" returnQName="ns18:updatePersonDetailsReturn" returnType="xsd:boolean" soapAction="" xmlns:ns18="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns18:person" type="ns18:Person"/>
+  </ns1:operation>
+  <ns1:operation name="getActiveReservation" qname="ns19:getActiveReservation" returnQName="ns19:getActiveReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns19="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns19:tid" type="xsd:string"/>
+   <ns1:parameter qname="ns19:date" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="modifyReservation" qname="ns20:modifyReservation" returnQName="ns20:modifyReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns20="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns20:ticketNumber" type="xsd:string"/>
+   <ns1:parameter qname="ns20:radioString" type="xsd:string"/>
+   <ns1:parameter qname="ns20:date" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="cancelReservation" qname="ns21:cancelReservation" returnQName="ns21:cancelReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns21="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns21:ticketNumber" type="xsd:string"/>
+   <ns1:parameter qname="ns21:status" type="xsd:string"/>
+   <ns1:parameter qname="ns21:date" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="flightExistence" qname="ns22:flightExistence" returnQName="ns22:flightExistenceReturn" returnType="xsd:boolean" soapAction="" xmlns:ns22="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns22:flight" type="ns22:Flight"/>
+  </ns1:operation>
+  <ns1:operation name="updateFlightDetails" qname="ns23:updateFlightDetails" returnQName="ns23:updateFlightDetailsReturn" returnType="xsd:boolean" soapAction="" xmlns:ns23="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns23:oAlid" type="xsd:string"/>
+   <ns1:parameter qname="ns23:oAircraft" type="xsd:string"/>
+   <ns1:parameter qname="ns23:oDeptdate" type="xsd:string"/>
+   <ns1:parameter qname="ns23:f" type="ns23:Flight"/>
+  </ns1:operation>
+  <ns1:operation name="searchEmployees" qname="ns24:searchEmployees" returnQName="ns24:searchEmployeesReturn" returnType="ns24:DisplayStaff" soapAction="" xmlns:ns24="http://Connection">
+   <ns1:parameter qname="ns24:name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns24:airline" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="updateEmployeeDetails" qname="ns25:updateEmployeeDetails" returnQName="ns25:updateEmployeeDetailsReturn" returnType="xsd:string" soapAction="" xmlns:ns25="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns25:sid" type="xsd:string"/>
+   <ns1:parameter qname="ns25:p" type="ns25:DisplayStaff"/>
+  </ns1:operation>
+  <ns1:operation name="createPerson" qname="ns26:createPerson" returnQName="ns26:createPersonReturn" returnType="xsd:string" soapAction="" xmlns:ns26="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns26:person" type="ns26:Person"/>
+  </ns1:operation>
+  <ns1:operation name="changePassword" qname="ns27:changePassword" returnQName="ns27:changePasswordReturn" returnType="xsd:boolean" soapAction="" xmlns:ns27="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns27:newpassword" type="xsd:string"/>
+   <ns1:parameter qname="ns27:pid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="login" qname="ns28:login" returnQName="ns28:loginReturn" returnType="xsd:string" soapAction="" xmlns:ns28="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns28:username" type="xsd:string"/>
+   <ns1:parameter qname="ns28:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getEmployee" qname="ns29:getEmployee" returnQName="ns29:getEmployeeReturn" returnType="ns29:Staff" soapAction="" xmlns:ns29="http://Connection">
+   <ns1:parameter qname="ns29:sid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="updateFlight" qname="ns30:updateFlight" returnQName="ns30:updateFlightReturn" returnType="ns30:Flight" soapAction="" xmlns:ns30="http://Connection">
+   <ns1:parameter qname="ns30:alid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns30:date" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="createFlight" qname="ns31:createFlight" returnQName="ns31:createFlightReturn" returnType="xsd:boolean" soapAction="" xmlns:ns31="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns31:flight" type="ns31:Flight"/>
+   <ns1:parameter qname="ns31:airLine" type="ns31:AirLines"/>
+  </ns1:operation>
+  <ns1:operation name="deleteEmp" qname="ns32:deleteEmp" returnQName="ns32:deleteEmpReturn" returnType="xsd:string" soapAction="" xmlns:ns32="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns32:sid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="createStaff" qname="ns33:createStaff" returnQName="ns33:createStaffReturn" returnType="xsd:string" soapAction="" xmlns:ns33="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns33:staff" type="ns33:Staff"/>
+  </ns1:operation>
+  <ns1:operation name="getCustomer" qname="ns34:getCustomer" returnQName="ns34:getCustomerReturn" returnType="ns34:Customer" soapAction="" xmlns:ns34="http://Connection">
+   <ns1:parameter qname="ns34:cid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="getPerson" qname="ns35:getPerson" returnQName="ns35:getPersonReturn" returnType="ns35:Person" soapAction="" xmlns:ns35="http://Connection">
+   <ns1:parameter qname="ns35:pid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="viewTicket" qname="ns36:viewTicket" returnQName="ns36:viewTicketReturn" returnType="xsd:string" soapAction="" xmlns:ns36="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns36:ticketnumber" type="xsd:string"/>
+   <ns1:parameter qname="ns36:date" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getFlights" qname="ns37:getFlights" returnQName="ns37:getFlightsReturn" returnType="ns37:Flight" soapAction="" xmlns:ns37="http://Connection">
+   <ns1:parameter qname="ns37:alid" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns37:date" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns37:source" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns37:destination" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="updatePerson" qname="ns38:updatePerson" returnQName="ns38:updatePersonReturn" returnType="xsd:boolean" soapAction="" xmlns:ns38="http://Connection" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns38:person" type="ns38:Person"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="newReservation getAssignedFlights getPersonCustomer updateEmployee modifyReservation searchEmployees getAllFlights cancelReservation getPerson deleteEmployee deleteEmp createFlight getBookingsOfACustomer getCustomerById getActiveReservation createCustomer viewTicket getCustTravelInfo getAllEmployee getFlights flightExistence login createPerson createEmployee updatePersonDetails updateFlightDetails getCustomerFlight updateCustomer getEmployee createStaff updatePerson register updateFlight getCustomer updateEmployeeDetails changePassword getAllCustomers getCompleterCustomerDetails"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Service"/>
+  <ns1:parameter name="className" value="Connection.Service"/>
+  <ns1:parameter name="wsdlServicePort" value="Service"/>
+  <ns1:parameter name="schemaQualified" value="http://Connection"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Connection"/>
+  <ns1:parameter name="wsdlServiceElement" value="ServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns39:Staff" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:Connection.Staff" xmlns:ns39="http://Connection"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns40:Flight" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:Connection.Flight" xmlns:ns40="http://Connection"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns41:Person" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:Connection.Person" xmlns:ns41="http://Connection"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns42:DisplayStaff" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:Connection.DisplayStaff" xmlns:ns42="http://Connection"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns43:Customer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:Connection.Customer" xmlns:ns43="http://Connection"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns44:AirLines" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:Connection.AirLines" xmlns:ns44="http://Connection"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
